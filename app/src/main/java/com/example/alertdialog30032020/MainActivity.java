@@ -3,6 +3,7 @@ package com.example.alertdialog30032020;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -12,7 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button mBtnAlertDialog;
+    Button mBtnAlertDialog,mBtnCustomDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mBtnAlertDialog = findViewById(R.id.buttonShowDialog);
+        mBtnCustomDialog = findViewById(R.id.buttonDialog);
 
         mBtnAlertDialog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +47,16 @@ public class MainActivity extends AppCompatActivity {
 
                 builder.show();
 
+            }
+        });
+
+        mBtnCustomDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.dialog_connection);
+
+                dialog.show();
             }
         });
     }
