@@ -25,17 +25,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String[] arrayAnimals = {"Meo","Ca","Voi","Heo","Ngua"};
+                boolean[] arrayChoose = {false,false,false,false,false};
                 AlertDialog.Builder builder =
                         new AlertDialog.Builder(MainActivity.this)
                                 .setTitle("Có tin thông báo mới")
                                 .setIcon(R.mipmap.ic_launcher)
                                 .setCancelable(false)
-                                .setSingleChoiceItems(arrayAnimals, -1, new DialogInterface.OnClickListener() {
+                                .setMultiChoiceItems(arrayAnimals, arrayChoose, new DialogInterface.OnMultiChoiceClickListener() {
                                     @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Toast.makeText(MainActivity.this, arrayAnimals[which], Toast.LENGTH_SHORT).show();
+                                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                                        if (isChecked){
+                                            Toast.makeText(MainActivity.this, "Đã chọn", Toast.LENGTH_SHORT).show();
+                                        }else{
+                                            Toast.makeText(MainActivity.this, "Bỏ chọn", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                 });
+
 
                 builder.show();
 
